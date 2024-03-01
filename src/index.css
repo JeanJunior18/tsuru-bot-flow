@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.react-flow__node-default, .react-flow__node-input, .react-flow__node-output, .react-flow__node-group {
+  width: auto !important;
+  max-width: 450px !important;
+  background-color: #D6EAF8 !important;
+  border-color: #D6EAF8 !important;
+}
+
+.block-title {
+  margin-bottom: 1rem;
+}
+
+.messages-container {
+  background-color: #EFF3F5;
+  padding: 0.5rem;
+  text-align: justify;
+  border-radius: 5px;
+}
+
+.message-container {
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.message-container p {
+  margin-bottom: 0.2rem;
+}
+
+.message-container:last-child {
+  margin-bottom: 0;
+}

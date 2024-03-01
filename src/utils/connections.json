@@ -1,0 +1,20 @@
+[
+    {
+        "block_source": 1,
+        "block_target": 2,
+        "by_options": false,
+        "label": "Fluxo padrão"
+    },
+    {
+        "block_source": 2,
+        "block_target": 3,
+        "by_options": true,
+        "label": "Suporte"
+    },
+    {
+        "block_source": 2,
+        "block_target": 4,
+        "by_options": true,
+        "label": "Comercial"
+    }
+]
