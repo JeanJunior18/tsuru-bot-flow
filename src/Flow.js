@@ -39,7 +39,6 @@ export default function Flow() {
         },
       })
       .then((res) => {
-        console.log(res.data);
         blocks = setBlocks(blocks, res);
         links = setConnections(links, res);
         setNodes(blocks);
@@ -64,7 +63,6 @@ export default function Flow() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        maxZoom={0.8}
       >
         <Controls />
         <MiniMap />
