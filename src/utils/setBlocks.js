@@ -33,7 +33,7 @@ export default function setBlocks(blocks, res) {
 
   if (res.data.results.length) {
     const block = res.data.results[0];
-    processBlocks(block, 10, 10);
+    processBlocks(block, 30, 10);
   }
 
   return blocks;

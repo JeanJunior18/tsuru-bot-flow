@@ -16,7 +16,7 @@ export default function NodeLabel({ block }) {
           ))}
         </div>
       ) : (
-        <>Sem mensagens configuradas :)</>
+        <div style={{padding: '0.5rem'}}>Sem mensagens configuradas :)</div>
       )}
     </div>
   );
