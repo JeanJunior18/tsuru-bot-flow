@@ -1,6 +1,6 @@
 import { Handle } from "reactflow";
 
-export default function NodeLabel({ data }) {
+export default function NodeLabel({ data, ...props }) {
   const { block } = data
   return (
     <div style={{
@@ -8,6 +8,7 @@ export default function NodeLabel({ data }) {
     }}>
       <Handle type="source" position="right" id="a" />
       <h4 className="block-title">{block.id} {block.name}</h4>
+      ({props.xPos}, {props.yPos})
       {block.messages.length ? (
         <div className="messages-container">
           {block.messages.map((message) => (

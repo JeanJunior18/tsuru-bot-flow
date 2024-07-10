@@ -16,14 +16,14 @@ export default function setBlocks(res) {
       let nextY = y;
       redirectBlocks.forEach((redirectedBlock) => {
         if (!blocks.some((b) => b.id === `${redirectedBlock.id}`)) {
-          processBlocks(redirectedBlock, x + 550, nextY);
+          processBlocks(redirectedBlock, x + 1500, nextY);
           const redirects = searchRedirectBlocks(
             [],
             redirectedBlock,
             res.data.results
           ).length;
           if (redirects) {
-            nextY += 600 * redirects;
+            nextY += 600;
           } else {
             nextY += 600;
           }
@@ -34,7 +34,7 @@ export default function setBlocks(res) {
 
   if (res.data.results.length) {
     const block = res.data.results[0];
-    processBlocks(block, 30, 10);
+    processBlocks(block, 0, 0);
   }
 
   return blocks;
