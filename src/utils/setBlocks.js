@@ -23,9 +23,9 @@ export default function setBlocks(res) {
             res.data.results
           ).length;
           if (redirects) {
-            nextY += 600 * redirects;
+            nextY += 550 * redirects;
           } else {
-            nextY += 600;
+            nextY += 150;
           }
         }
       });
