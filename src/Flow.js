@@ -8,25 +8,27 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   addEdge,
+  BackgroundVariant,
+  applyNodeChanges,
+  applyEdgeChanges,
 } from "reactflow";
 
 import "reactflow/dist/style.css";
 import setConnections from "./utils/setConnections";
 import setBlocks from "./utils/setBlocks";
+import NodeLabel from "./NodeLabel";
 
-const initialNodes = [];
-const initialEdges = [];
+const nodeTypes = { block: NodeLabel }
 
 export default function Flow() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, setNodes] = useNodesState([]);
+  const [edges, setEdges] = useEdgesState([]);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
   const organizationId = Number(queryParams.get("organization"));
   const token = queryParams.get("token");
-  let links = [];
-  let blocks = [];
+
 
   useEffect(() => {
     axios
@@ -39,34 +41,41 @@ export default function Flow() {
         },
       })
       .then((res) => {
-        blocks = setBlocks(blocks, res);
-        links = setConnections(links, res);
-        setNodes(blocks);
-        setEdges(links);
+        setNodes(setBlocks(res));
+        setEdges(setConnections(res));
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [organizationId, token, setEdges, setNodes]);
 
+  const onNodesChange = useCallback(
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    [setNodes],
+  );
+  const onEdgesChange = useCallback(
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    [setEdges],
+  );
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    (connection) => setEdges((eds) => addEdge(connection, eds)),
+    [setEdges],
   );
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <ReactFlow
-        nodeTypes={{ Background: "red" }}
+        nodeTypes={nodeTypes}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
       >
-        <Controls />
-        <MiniMap />
-        {/* <Background variant="dots" gap={12} size={1} /> */}
+        <Background variant={BackgroundVariant.Dots} >
+          <Controls />
+          <MiniMap />
+        </Background>
       </ReactFlow>
     </div>
   );

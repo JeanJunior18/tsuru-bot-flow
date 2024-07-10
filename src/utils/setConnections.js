@@ -1,6 +1,6 @@
-export default function setConnections(links, res) {
+export default function setConnections(res) {
   const usedIds = new Set();
-
+  const links = []
   for (let i = 0; i < res.data.results.length; i++) {
     const b = res.data.results[i];
     for (let k = 0; k < b.messages.length; k++) {
@@ -8,15 +8,14 @@ export default function setConnections(links, res) {
       for (let j = 0; j < m.options.length; j++) {
         const op = m.options[j];
 
-        const connectionId = `link${b.id}-${op.id}-${op.jump_to}`;
+        const connectionId = `e${b.id}-${op.jump_to}`;
 
-        if (!usedIds.has(connectionId)) {
+        if (!usedIds.has(connectionId) && b.id && op.jump_to) {
           links.push({
             id: connectionId,
             source: `${b.id}`,
             target: `${op.jump_to}`,
-            type: "bezier",
-            label: op.option,
+            animated: true
           });
           usedIds.add(connectionId);
         }

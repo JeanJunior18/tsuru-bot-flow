@@ -36,7 +36,7 @@ code {
 .messages-container {
   padding: 0.5rem;
   text-align: justify;
-  border-radius: 5px;
+  border-radius: 100px;
 }
 
 .message-container {

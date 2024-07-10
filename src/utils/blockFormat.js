@@ -1,14 +1,14 @@
-import NodeLabel from "../NodeLabel";
 
 export default function blockFormat(x, y, block) {
   return {
     id: `${block.id}`,
     position: { x, y },
     data: {
-      label: <NodeLabel block={block} />,
+      block,
     },
+    type: "block",
     sourcePosition: "bottom",
     targetPosition: "left",
-    isConnectable: false,
+    isConnectable: true,
   };
 }
