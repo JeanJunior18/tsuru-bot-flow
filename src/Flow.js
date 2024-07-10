@@ -72,7 +72,9 @@ export default function Flow() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
       >
-        <Background variant={BackgroundVariant.Dots} >
+        <Background style={{
+          backgroundColor: '#f4f5f8'
+        }} variant={BackgroundVariant.Dots} >
           <Controls />
           <MiniMap />
         </Background>
