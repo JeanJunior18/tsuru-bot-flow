@@ -5,7 +5,7 @@ export default function NodeLabel({ data, ...props }) {
   return (
     <div className="block-card">
       <Handle type="source" position="right" id="a" />
-      <h4 className="block-title">{block.name} ({props.xPos}, {props.yPos})</h4>
+      <h4 className="block-title">{block.name}</h4>
       {block.messages.length ? (
         <div className="messages-container">
           {block.messages.map((message) => (
